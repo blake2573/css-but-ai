@@ -1,0 +1,40 @@
+export function buildModuleCode(css: string, classes: Record<string, string>, styleId: string): string {
+  const cssText = JSON.stringify(css);
+  const classMap = JSON.stringify(classes, null, 2);
+
+  return [
+    `const cssText = ${cssText};`,
+    `const styleId = ${JSON.stringify(styleId)};`,
+    "const STYLE_ATTR = 'data-ass-style';",
+    "",
+    "function ensureStyle() {",
+    "  let style = document.querySelector(`style[${STYLE_ATTR}=\\\"${styleId}\\\"]`);",
+    "  if (!style) {",
+    "    style = document.createElement('style');",
+    "    style.setAttribute(STYLE_ATTR, styleId);",
+    "    document.head.appendChild(style);",
+    "  }",
+    "  if (style.textContent !== cssText) {",
+    "    style.textContent = cssText;",
+    "  }",
+    "  return style;",
+    "}",
+    "",
+    "if (typeof document !== 'undefined') {",
+    "  ensureStyle();",
+    "}",
+    "",
+    "if (import.meta.hot) {",
+    "  import.meta.hot.accept();",
+    "  import.meta.hot.dispose(() => {",
+    "    const style = document.querySelector(`style[${STYLE_ATTR}=\\\"${styleId}\\\"]`);",
+    "    if (style && style.parentNode) {",
+    "      style.parentNode.removeChild(style);",
+    "    }",
+    "  });",
+    "}",
+    "",
+    `const styles = ${classMap};`,
+    "export default styles;",
+  ].join("\n");
+}

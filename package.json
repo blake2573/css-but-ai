@@ -1,0 +1,58 @@
+{
+  "name": "css-but-ai",
+  "version": "0.1.0",
+  "description": "Vite-first compile-time CSS framework powered by AI prompts in .ass files",
+  "author": "blake2573",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blake2573/css-but-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/blake2573/css-but-ai/issues"
+  },
+  "homepage": "https://github.com/blake2573/css-but-ai#readme",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "ass.d.ts",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./ass": {
+      "types": "./ass.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build && npm run typecheck",
+    "sample:install": "npm --prefix ./examples/vite-app install",
+    "sample:dev": "npm --prefix ./examples/vite-app run dev",
+    "sample:build": "npm --prefix ./examples/vite-app run build",
+    "sample:verify": "npm --prefix ./examples/vite-app run verify"
+  },
+  "keywords": [
+    "vite",
+    "vite-plugin",
+    "css",
+    "ai",
+    "llm",
+    "postcss"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.1.2"
+  },
+  "dependencies": {
+    "postcss": "^8.5.16",
+    "postcss-selector-parser": "^7.1.4"
+  }
+}

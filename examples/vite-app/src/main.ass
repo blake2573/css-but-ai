@@ -1,0 +1,5 @@
+Generate CSS for the main display page of the app:
+
+- Use .root for the main section and i want the display to show in a column, but centered on the page
+- There is a main page header called (h1) that should be a large-ish font size and bold
+- There is a p tag that describes what's on the page that should be a smaller font and a more faded colour

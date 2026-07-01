@@ -1,0 +1,6 @@
+Generate CSS for exactly two class selectors named .root and .cta.
+
+Requirements:
+- .root should set flex, centered, and bold.
+- .cta should define a navy background, white text, 10px 16px padding, 10px border-radius, pointer cursor, and a 180ms transition.
+- Include a hover state on .cta that slightly darkens the background.
