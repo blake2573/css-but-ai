@@ -1,6 +1,6 @@
 # css-but-ai
 
-Vite-first compile-time CSS framework where `.ass` files contain plain-text prompts.
+Vite-first compile-time CSS framework where `.ass` (**A**i **S**tyle **S**heet) files contain plain-text prompts.
 
 At load time, the plugin calls a real LLM API, receives CSS, sanitizes it, scopes selectors using a CSS Modules-like naming scheme, and injects the generated CSS through JS.
 
